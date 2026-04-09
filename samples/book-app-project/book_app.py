@@ -59,6 +59,30 @@ def handle_find():
     show_books(books)
 
 
+def handle_mark():
+    print("\nMark a Book as Read\n")
+
+    title = input("Enter the title of the book to mark as read: ").strip()
+    result = collection.mark_as_read(title)
+
+    if result:
+        print(f"\n'{title}' has been marked as read.\n")
+    else:
+        print(f"\nBook '{title}' not found.\n")
+
+
+def handle_unmark():
+    print("\nMark a Book as Unread\n")
+
+    title = input("Enter the title of the book to mark as unread: ").strip()
+    result = collection.mark_as_unread(title)
+
+    if result:
+        print(f"\n'{title}' has been marked as unread.\n")
+    else:
+        print(f"\nBook '{title}' not found.\n")
+
+
 def show_help():
     print("""
 Book Collection Helper
@@ -68,6 +92,8 @@ Commands:
   add      - Add a new book
   remove   - Remove a book by title
   find     - Find books by author
+  mark     - Mark a book as read
+  unmark   - Mark a book as unread
   help     - Show this help message
 """)
 
@@ -87,6 +113,10 @@ def main():
         handle_remove()
     elif command == "find":
         handle_find()
+    elif command == "mark":
+        handle_mark()
+    elif command == "unmark":
+        handle_unmark()
     elif command == "help":
         show_help()
     else:
